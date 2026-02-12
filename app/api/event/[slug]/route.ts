@@ -24,7 +24,7 @@ export async function GET(
             );
         }
 
-        const sanitizedSlug = slug.trim().toLocaleLowerCase();
+        const sanitizedSlug = slug.trim().toLowerCase();
 
         const event = await Event.findOne({ slug: sanitizedSlug }).lean();
 
