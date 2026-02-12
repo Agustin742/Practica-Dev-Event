@@ -270,4 +270,107 @@
       }
     }
   }
+
+  #event-form {
+    @apply w-full max-w-6xl mx-auto px-6 flex flex-col gap-10;
+
+    .form-header {
+      @apply flex flex-col gap-3 text-center;
+
+      h2 {
+        @apply text-3xl font-bold;
+      }
+
+      p {
+        @apply text-light-200;
+      }
+    }
+
+    form {
+      @apply glass card-shadow p-8 max-sm:p-5 
+            grid gap-10 
+            lg:grid-cols-3;
+    }
+
+    /* COLUMNAS */
+    .main-column {
+      @apply lg:col-span-2 flex flex-col gap-8;
+    }
+
+    .side-column {
+      @apply lg:col-span-1 flex flex-col gap-8;
+    }
+
+    /* GRID INTERNO DE 2 CAMPOS */
+    .grid-2 {
+      @apply grid grid-cols-2 gap-6 max-md:grid-cols-1;
+    }
+
+    /* CAMPOS */
+    .field {
+      @apply flex flex-col gap-2;
+
+      label {
+        @apply text-sm text-light-100;
+      }
+
+      input,
+      textarea,
+      select {
+        @apply bg-dark-200 border border-dark-200 
+              focus:border-primary focus:outline-none 
+              rounded-md px-4 py-2.5 
+              text-light-100 
+              placeholder:text-light-200
+              transition-all duration-200;
+      }
+
+      textarea {
+        @apply min-h-[120px] resize-none;
+      }
+
+      select {
+        @apply cursor-pointer;
+      }
+    }
+
+    /* TAGS & AGENDA */
+    .dynamic-field {
+      @apply flex flex-col gap-4;
+
+      .input-group {
+        @apply flex gap-3 max-sm:flex-col;
+
+        input {
+          @apply flex-1;
+        }
+
+        button {
+          @apply bg-dark-100 border border-dark-200 
+                hover:border-primary hover:text-primary
+                transition-all px-4 py-2 rounded-md;
+        }
+      }
+
+      .items {
+        @apply flex flex-wrap gap-3;
+      }
+
+      .item {
+        @apply bg-dark-100 border border-dark-200 
+              px-3 py-1.5 rounded-md text-sm 
+              hover:border-destructive hover:text-destructive 
+              cursor-pointer transition-all;
+      }
+    }
+
+    .submit-btn {
+      @apply bg-primary hover:bg-primary/90 
+            text-black font-semibold 
+            rounded-md py-3 text-lg 
+            transition-all duration-200;
+    }
+  }
+
+
 }
