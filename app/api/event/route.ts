@@ -1,5 +1,3 @@
-'use server'
-
 import { v2 as cloudinary } from 'cloudinary'
 import { Event } from "@/database";
 import connectDB from "@/lib/mongodb";
@@ -48,7 +46,7 @@ export async function POST(req: NextRequest) {
             agenda: agenda
         });
 
-        revalidateTag('tags', 'max');
+        revalidateTag('events', 'max');
 
         return NextResponse.json({ message: 'Event created successfully', event: createEvent }, { status: 201 })
 
