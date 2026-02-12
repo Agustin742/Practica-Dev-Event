@@ -60,7 +60,7 @@ export async function GET(
         }
 
         return NextResponse.json(
-            { message: 'An unexpected error Ocurred'},
+            { message: 'An unexpected error occurred'},
             { status: 500}
         );
     }
