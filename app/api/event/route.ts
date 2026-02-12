@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
             agenda: agenda
         });
 
-        return NextResponse.json({ message: 'Event Created Succesfuly', event : createEvent }, { status: 201 })
+        return NextResponse.json({ message: 'Event created successfully', event: createEvent }, { status: 201 })
 
     } catch (e) {
         return NextResponse.json({ message: 'Event Creation Failed', error: e ? (e as Error).message : 'Unknown error' }, { status: 400 })

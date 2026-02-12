@@ -2,8 +2,8 @@
 const EventTags = ({ tags }: { tags: string[] }) => {
   return (
     <div className="flex flex-row gap-2 flex-wrap">
-        {tags.map((tag) => (
-            <div className="pill" key={tag}>{tag}</div>
+        {tags.map((tag, index) => (
+            <div className="pill" key={index}>{tag}</div>
         ))}
     </div>
   )

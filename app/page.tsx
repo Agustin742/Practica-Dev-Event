@@ -12,7 +12,21 @@ const Page = async () => {
   cacheLife('hours');
 
   const response = await fetch(`${BASE_URL}/api/event`);
-  const { events } = await response.json()
+  
+  if (!response.ok) {
+    console.error('Failed to fetch events:', response.status);
+    return (
+      <section>
+        <h1 className='text-center'>
+          The Hub for Every Dev <br />
+          Event You Can't Miss
+        </h1>
+        <p className="text-center mt-5">Failed to load events. Please try again later.</p>
+      </section>
+    );
+  }
+  
+  const { events } = await response.json();
 
 
   return (
