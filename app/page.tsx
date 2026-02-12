@@ -13,22 +13,22 @@ const Page = async () => {
   'use cache';
   cacheLife('hours');
 
-  // const response = await fetch(`${BASE_URL}/api/event`);
+  const response = await fetch(`${BASE_URL}/api/event`);
   
-  // if (!response.ok) {
-  //   console.error('Failed to fetch events:', response.status);
-  //   return (
-  //     <section>
-  //       <h1 className='text-center'>
-  //         The Hub for Every Dev <br />
-  //         Event You Can't Miss
-  //       </h1>
-  //       <p className="text-center mt-5">Failed to load events. Please try again later.</p>
-  //     </section>
-  //   );
-  // }
+  if (!response.ok) {
+    console.error('Failed to fetch events:', response.status);
+    return (
+      <section>
+        <h1 className='text-center'>
+          The Hub for Every Dev <br />
+          Event You Can't Miss
+        </h1>
+        <p className="text-center mt-5">Failed to load events. Please try again later.</p>
+      </section>
+    );
+  }
   
-  // const { events } = await response.json();
+  const { events } = await response.json();
 
 
   return (
@@ -47,7 +47,7 @@ const Page = async () => {
           <h3>Feature events</h3>
 
           <ul className="events">
-            {events && events.length > 0 && events.map((event) => (
+            {events && events.length > 0 && events.map((event: IEvent) => (
               <li key={event.title} className="list-none">
                 <EventCard {...event} />
               </li>
