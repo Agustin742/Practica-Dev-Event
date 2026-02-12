@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
         const file = formData.get('image') as File;
 
         if (!file) {
-            return NextResponse.json({ message: 'Image is requiered' }, { status: 400 });
+            return NextResponse.json({ message: 'Image is required' }, { status: 400 });
         }
 
         let tags = JSON.parse(formData.get('tags') as string);
