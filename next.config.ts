@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true
   },
   cacheComponents: true,
+  experimental: {
+    cacheLife: {
+      hours: {
+        stale: 3600,        // 1 hour
+        revalidate: 7200,   // 2 hours
+        expire: 86400       // 24 hours
+      }
+    }
+  },
   images: {
     remotePatterns: [
       {

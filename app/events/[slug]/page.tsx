@@ -22,10 +22,9 @@ const EventDetailsPage = async (
 
   const { event } = await request.json();
 
+  if (!event) return notFound();
+
   const { description, image, overview, date, time, location, mode, agenda, audience, tags, organizer} = event;
-
-  if (!description) return notFound();
-
   const booking = 10;
 
   const similarEvents: IEvent[] = await getSimilarEventsBySlug(slug);

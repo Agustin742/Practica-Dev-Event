@@ -11,9 +11,12 @@ interface props {
 const BookEvent = ({ eventId, slug }: props) => {
     const [email, setEmail] = useState('');
     const [submitted, setSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
+        setIsLoading(true);
         const { success } = await createBooking({ eventId, slug, email });
 
         if (success) {
@@ -21,8 +24,9 @@ const BookEvent = ({ eventId, slug }: props) => {
             posthog.capture('event-booked', {eventId, slug, email})
         }else {
             console.error('Booking creation failed');
-            posthog.captureException('Booking creation failed')
+            posthog.captureException(new Error('Booking creation failed'))
         }
+        setIsLoading(false);
     }
 
   return (
@@ -41,7 +45,10 @@ const BookEvent = ({ eventId, slug }: props) => {
                     />
                 </div>
 
-                <button type="submit" className="button-submit">Submit</button>
+                <button type="submit" className="button-submit" disabled={isLoading}>
+                    {isLoading ? 'Submitting...' : 'Submit'}
+                </button>
+
             </form>
         )}
     </div>

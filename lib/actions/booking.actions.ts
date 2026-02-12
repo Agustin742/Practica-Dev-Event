@@ -17,8 +17,13 @@ export const createBooking = async (
         await Booking.create({ eventId, slug, email });
 
         return { success: true };
-    } catch (e) {
+    } catch (e: unknown) {
         console.error('create booking failed', e);
-        return { success: false };
-    }
-}
+        
+        // Handle duplicate booking (unique index violation)
+        if (e instanceof Error && 'code' in e && (e as { code: number }).code === 11000) {
+            return { success: false, error: 'You have already booked this event.' };
+        }
+        
+        return { success: false, error: 'Failed to create booking. Please try again.' };
+    }}
